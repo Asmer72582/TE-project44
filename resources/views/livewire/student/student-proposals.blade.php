@@ -1,147 +1,186 @@
-<div>
+@extends('layouts.student_layout')
+@section('content')
+<style>
+    @media (min-width: 1024px) {
+        #form-container {
+            position: sticky;
+            top: 1rem;
+        }
+    }
+    img{
+        height: 25px;
+        display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+    }
+</style>
+<div class="mx-auto max-w-screen-2xl p-4 md:px-6 2xl:px-10 my-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <h2 class="text-title-md2 font-bold text-black dark:text-white">
+      Proposals
 
-    <html>
-
-    <head>
-        <link rel="stylesheet" href="{{ asset('css/Homepage.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/Tasks.css') }}">
-
-        <script src="https://www.gstatic.com/charts/loader.js"></script>
-    </head>
-
-    <body>
-        <div class="header-box">
-            {{-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                class="navigation-icon" onclick="TabDisplay(event)">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg> --}}
-            <span class="heading">PROPOSALS 
-            </span>
-
-            
-
-            {{-- @if ($show_table) --}}
-               
-            {{-- @endif --}}
+    @if ($show_table)
+        <h1>hello</h1>
+    @else
+        <h3>hijjuji</h3>
+    @endif
 
 
-        </div>
-        @include('nav.student-nav')
-        <form class="proposal-container">
+    </h2>
 
-            <div class="proposal-2">
-                <h2 class="proposal-2-heading">ADD PROPOSAL</h2>
-                <p class="proposal-2-name">Name</p>
-                <input class="proposal-2-input-1 form-control" type="text" maxlength="50" size="50"
-                    wire:model="proj_name" placeholder="Project Name" required>
-                <br class="line-height">
-                <p class="proposal-2-description">Description</p>
-                <textarea class="proposal-2-input-2 form-control" rows="13" cols="47" wire:model="proj_description"
-                    placeholder="Project Description..." required></textarea>
-                <br class="line-height">
-                {{-- <input type="hidden" value="{{ Auth::User()->name }}" wire:model="user_name"> --}}
-                <p class="proposal-2-domain">Domain</p>
-                <textarea class="proposal-2-input-3 form-control"  rows="2" cols="47" wire:model="proj_domain"
-                    placeholder="Enter Domain Name(s)" required></textarea>
+    <nav>
+      <ol class="flex items-center gap-2">
+        <li>
+          <a class="font-medium" href="index.html">Dashboard /</a>
+        </li>
+        <li class="font-medium text-primary">Proposals</li>
+      </ol>
+    </nav>
+  </div>
+<div class="min-h-screen flex  justify-center">
+    
+    <div class="container  mx-auto px-6  shadow-lg rounded-lg flex flex-col md:flex-row gap-4">
+        <!-- Form Section -->
+        <div id="form-container" class="w-full md:w-1/3 p-4 bg-gray-50 shadow-md rounded-lg relative">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-semibold text-primary">Add Proposal</h2>
+                
             </div>
-<br>
-            <input class="btn" type="button" wire:click="submitProposal" value="SUBMIT">
-        </form>
+            <form class="space-y-4">
+                <!-- Name Field -->
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        wire:model="proj_name"
+                        class="mt-1 block w-full border-gray-300 py-5 px-2 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        placeholder="Enter name" 
+                        required
+                    >
+                </div>
 
-        <style>
+                <!-- Domain Field -->
+                <div>
+                    <label for="domain" class="block text-sm font-medium text-gray-700">Domain</label>
+                    <input 
+                        type="text" 
+                        id="domain" 
+                        name="domain" 
+                        class="mt-1 block w-full border-gray-300 py-5 px-2  rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        placeholder="Enter domain" 
+                        required
+                        wire:model="proj_domain"
+                    >
+                </div>
 
+                <!-- Description Field -->
+                <div>
+                    <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                    <textarea 
+                        id="description" 
+                        name="description" 
+                        class="mt-1 block w-full border-gray-300 py-5 px-2 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        rows="5" 
+                        placeholder="Enter description" 
+                        required
+                        wire:model="proj_description"
+                    ></textarea>
+                </div>
 
-            table {
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
-                position: relative;
-                left: 48.5%;
-                right: 0%;
-                top: 3.2vh;
-                width: 50%;
+              
+                <input 
+                type="button" 
+                value="Submit"
+                onclick="clearForm"
+                class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                wire:click="submitProposal"
+                >
+            </form>
+        </div>
 
-                box-shadow: 0px 0px 10px gray;
-            }
+        <!-- Table Section -->
+        <div id="table-container" class="w-full md:w-2/3 p-4 bg-gray-50 shadow-md rounded-lg">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-semibold text-primary ">Submitted Data </h2>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full border-collapse border border-gray-300">
+                    <thead class="bg-gray-200">
+                        <tr>
+                            <th class="border border-gray-300 px-4 py-2 text-left">Serial No</th>
+                            <th class="border border-gray-300 px-4 py-2 text-left">Name</th>
+                            <th class="border border-gray-300 px-4 py-2 text-left">Description</th>
+                            <th class="border border-gray-300 px-4 py-2 text-left">Domain</th>
+                            <th class="border border-gray-300 px-4 py-2 text-left">Status</th>
+                            <th class="border border-gray-300 px-4 py-2 text-left">Action</th>
 
-            table tr {
-                text-align: center;
-                border: 1px solid #d9d9d9;
+                        </tr>
 
-            }
+                    </thead>
+                   
+                    <tbody id="data-table-body">
 
-            thead {
-                background: #198753;
-                color: white;
-            }
+                        <!-- Dynamic rows will be added here -->
 
-            th {
-                padding: 10px;
-            }
+                        @foreach ($proposals as $proposal)
+                            <tr>
+                                
+                                <td class="border border-gray-300 px-4 py-2 text-left">{{$counter++}}</td>
+                                <td class="border border-gray-300 px-4 py-2 text-left">{{ $proposal->proposal_name }}</td>
+                                <td class="border border-gray-300 px-4 py-2 text-left">{{ $proposal->proposal_description }}</td>
+                                <td class="border border-gray-300 px-4 py-2 text-left">{{ $proposal->proposal_domain }}</td>
+                                <td class="border border-gray-300 px-4 py-2 text-right">
+                                    @if ($proposal->is_accepted === 0)
+                                        <img src="{{ asset('img/rejected.png') }}"  alt="">
+                                    @elseif($proposal->is_accepted === 1)
+                                        <img src="{{ asset('img/tick.png') }}"  alt="">
+                                    @else
+                                        <img src="{{ asset('img/pending.png') }}"  alt="">
+                                    @endif
+                                </td>
+                                <td class="border border-gray-300 px-4 py-2 text-left">
+                                    <button wire:click="deleteProposal({{ $proposal->proposal_id }})">
+                                        X
+                                    </button>
+                                </td>
+                            </tr>
+                        @endforeach
+                        {{-- <td colspan="5" id="ifNothing" class="border text-center font-bold text-xl	 border-gray-300 px-4 py-2">Nothing is added</td> --}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
-            td {
-                padding: 10px;
-                background: whitesmoke;
-            }
-        </style>
-
-        <table class="table-striped table-bordered table-hover">
-
-            <thead>
-                <th>Sr.No.</th>
-                <th>Proposal Title</th>
-                <th>Proposal Description</th>
-                <th>Proposal Domain</th>
-                <th>Status</th>
-            </thead>
-
-            <tbody>
-                {{$counter =1}}
-                @foreach ($proposals as $proposal)
-                    <tr>
-                        
-                        <td>{{$counter++}}</td>
-                        <td>{{ $proposal->proposal_name }}</td>
-                        <td>{{ $proposal->proposal_description }}</td>
-                        <td>{{ $proposal->proposal_domain }}</td>
-                        <td>
-                            @if ($proposal->is_accepted === 0)
-                                <img src="{{ asset('img/rejected.png') }}" height="20" alt="">
-                            @elseif($proposal->is_accepted === 1)
-                                <img src="{{ asset('img/tick.png') }}" height="20" alt="">
-                            @else
-                                <img src="{{ asset('img/pending.png') }}" height="20" alt="">
-                            @endif
-                        </td>
-                    </tr>
-                @endforeach
-
-
-            </tbody>
-
-        </table>
-
-
-    </body>
-
-    </html>
-
-
-    <script>
-        // function TabDisplay(event) {
-        //     let tab = document.getElementsByClassName("navigation-tab")[0];
-        //     if (tab.style.display === 'flex') {
-        //         tab.style.display = 'none';
-        //     } else {
-        //         tab.style.display = 'flex';
-        //     }
-        // }
-    </script>
-
-    @script
-        <script>
-            window.addEventListener('proposal', event => {
-                alert(event.detail[0].message);
-            })
-        </script>
-    @endscript
-
+ 
 </div>
+<script>
+    window.addEventListener('proposal', event => {
+        // alert(event.detail[0].message);
+
+        Swal.fire({
+            title: event.detail[0].title,
+            text: event.detail[0].message,
+            icon: event.detail[0].type
+        });
+
+    })
+</script>
+<script>
+    function clearForm() {
+
+    }
+        function TabDisplay(event) {
+            
+            if ({{$show_table}}) {
+                cl('h');
+            } else {
+                console.log("he;;p");
+            }
+        }
+
+        TabDisplay()
+</script>
+@endsection

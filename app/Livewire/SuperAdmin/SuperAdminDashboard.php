@@ -28,7 +28,7 @@ class SuperAdminDashboard extends Component
         $this->participants_count = User::all()->groupBy("group_no")->count() - 1;
         $this->notification_count = Notifications::all()->count();
         // $this->repositories_count = Repositories::all()->count();
-        $this->tasks_count = Tasks::where('group_no', 'system_group_dont_delete_row' )->count();
+        $this->tasks_count = Tasks::where('group_no', 'system_group_dont_delete_row')->count();
 
 
 

@@ -9,22 +9,23 @@
 
     <body>
         <div class="header-box">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            {{-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 class="navigation-icon" onclick="TabDisplay(event)">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
+            </svg> --}}
             <span class="heading">GROUPS</span>
-            @include('nav.superadmin-nav')
+            
 
         </div>
 
+        @include('nav.superadmin-nav')
         <style>
             table {
                 font-family: Verdana, Geneva, Tahoma, sans-serif;
-                position: relative;
-                left: 15%;
+                position: absolute;
+                right: 50px;
                 top: 10vh;
-                width: 50%;
+                width: 75%;
                 box-shadow: 0px 0px 10px gray;
             }
 
@@ -34,8 +35,9 @@
             }
 
             thead {
-                background: black;
+                background: #198753;
                 color: white;
+
             }
 
             th {
@@ -48,10 +50,10 @@
                 z-index: 100;
             }
 
-            table button {
+             button {
                 cursor: pointer;
                 padding: 10px;
-                background: black;
+                background: #198753;
                 color: white;
                 border: none;
                 outline: none;
@@ -63,7 +65,9 @@
         @if ($group_no === null)
             <table>
 
+                
                 <thead>
+                    <th>Sr No.</th>
                     <th>Group No</th>
                     <th>Instructor Name</th>
                     <th>Instructor</th>
@@ -72,8 +76,10 @@
 
                 <tbody>
 
+
                     @foreach ($groups as $group)
                         <tr>
+                            <td>{{ $count++}}</td>
                             <td>{{ $group->group_no }}</td>
                             <td>{{ $group->name }}</td>
                             <td>{{ $group->email }}</td>
@@ -93,10 +99,16 @@
 
             </table>
         @else
-            <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif; position: relative; left:300px;">PARTICIPANTS
-                OF {{ $group_no }} GROUP</h1>
+        <br>
 
-            <table style="position: relative; top:-10px;">
+            <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif; position: absolute;top:7vh; left:400px;">PARTICIPANTS
+                OF {{ $group_no }} GROUP
+            <a href="/dashboard/superadmin/groups/"><button> Go back</button></a>
+
+            </h1>
+                
+
+            <table style="position: absolute; top:18vh; ">
 
                 <thead>
                     <th>Group No</th>

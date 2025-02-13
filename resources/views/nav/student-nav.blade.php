@@ -114,3 +114,6 @@ width: 100%;
         </svg>
         LOGOUT</a>
 </div>
+
+
+@include("components.important-links");

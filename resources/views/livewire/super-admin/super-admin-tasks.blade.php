@@ -5,41 +5,40 @@
 
     <head>
         <link rel="stylesheet" href="{{ asset('css/Tasks.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/Homepage.css') }}">
         <script src="https://www.gstatic.com/charts/loader.js"></script>
     </head>
 
     <body>
+        @include('nav.superadmin-nav')
         <div class="header-box">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                class="navigation-icon" onclick="TabDisplay(event)">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
+     
             <span class="heading">TASKS</span>
 
-            @include('nav.superadmin-nav')
+  
 
 
         </div>
-
+    
         <style>
             table {
                 font-family: Verdana, Geneva, Tahoma, sans-serif;
                 position: relative;
-                left: 19%;
-                top: 3.2vh;
-                width: 80%;
+                left: 25%;
+                top: 7.2vh;
+                width: 70%;
                 box-shadow: 0px 0px 10px gray;
+
             }
-
-
 
             table tr {
                 text-align: center;
             }
 
             thead {
-                background: black;
+                background: #198754;
                 color: white;
+                border: 1px solid black;
             }
 
             th {
@@ -52,7 +51,7 @@
             }
 
             .toggle_button {
-                background: black;
+                background: 198754;
                 text-align: center;
                 align-content: center;
                 justify-content: center;
@@ -63,7 +62,7 @@
             }
 
             .add_task_btn {
-                background: -webkit-linear-gradient(right, rgb(242, 26, 242), rgba(94, 94, 242));
+                background: #198754;
                 color: white;
                 padding: 10px;
                 position: relative;
@@ -85,22 +84,12 @@
             }
 
             .modal_background {
-                height: 100vh;
-                width: 100%;
-                background: rgba(0, 0, 0, 0.5);
-                position: absolute;
-                z-index: 50;
-                margin: 0px;
-                padding: 0px;
-                left: 0px;
-                top: 0px;
-                border: none;
-                justify-content: center;
-                align-content: center;
+            
+              
             }
 
             .modal {
-                height: 50vh;
+                height: 55%;
                 width: 20%;
                 background: whitesmoke;
                 margin-top: 5%;
@@ -109,6 +98,7 @@
                 justify-content: center;
                 text-align: center;
                 max-width: 50%;
+                z-index: 100000000;
                 font-family: Verdana, Geneva, Tahoma, sans-serif;
             }
 
@@ -131,48 +121,31 @@
             td {
                 border: 1px solid black;
             }
+            .actionbuttons{
+                position: absolute;
+                left: 400px;
+                top: 7vh;
+            }
         </style>
 
 
-        <div class="modal_background modal_hide" id="modal_background">
-            <div class="modal">
-                <h1>Add Task</h1>
-                <form wire:submit.prevent="create_task">
-                    <p>
-                        <label for="">Week No.</label>
-                        <input type="number" name="" class="form_input" placeholder="Week" wire:model="week_no"
-                            id="" required>
-                    </p>
-                    <p>
-                        <label for="">Task Title</label>
-                        <input type="text" name="" class="form_input" placeholder="Task Title"
-                            wire:model="task_title" id="" required>
-                    </p>
-                    <p>
-                        <label for="">Task Due Date</label>
-                        <input type="date" name="" class="form_input" placeholder="Due Date"
-                            wire:model="task_due_date" id="" required>
-                    </p>
-
-                    <p>
-                        <button class="add_task_btn modal_btn" type="submit">Create Task</button>
-                        <button class="add_task_btn modal_btn" type="button" style="z-index: 1000;"
-                            id="close_modal_btn">Close</button>
-                    </p>
-                </form>
-
-            </div>
-        </div>
+      
+<div class="actionbuttons">
 
 
-        <button class="add_task_btn" onclick="create_task" id="create_task">Add Task</button>
-        <button class="add_task_btn" style="@if ($tasks->count() >= 11) display:none; @endif"
-            wire:click="create_default_tasks">Create Default Tasks</button>
-        <button class="add_task_btn" onclick="printTable()">Print</button>
+    <button class="add_task_btn" onclick="create_task" id="create_task">Add Task</button>
+    <button class="add_task_btn" style="@if ($tasks->count() >= 11) display:none; @endif"
+        wire:click="create_default_tasks">Create Default Tasks</button>
+    <button class="add_task_btn" onclick="printTable()">Print</button>
 
+</div>
 
         <style>
             @media print {
+
+                .navigation-tab{
+                    display: none;
+                }
 
 
                 .header-box {
@@ -222,7 +195,6 @@
             function printTable() {
                 window.print();
             }
-
 
             let create_task = document.getElementById("create_task");
             let modalBackground = document.getElementById("modal_background");
@@ -310,6 +282,35 @@
         </table>
 
 
+        <div class="modal_background " id="modal_background">
+            <div class="modal ">
+                <h1>Add Task</h1>
+                {{-- <form wire:submit.prevent="create_task">
+                    <p>
+                        <label for="">Week No.</label>
+                        <input type="number" name="" class="form_input" placeholder="Week" wire:model="week_no"
+                            id="" required>
+                    </p>
+                    <p>
+                        <label for="">Task Title</label>
+                        <input type="text" name="" class="form_input" placeholder="Task Title"
+                            wire:model="task_title" id="" required>
+                    </p>
+                    <p>
+                        <label for="">Task Due Date</label>
+                        <input type="date" name="" class="form_input" placeholder="Due Date"
+                            wire:model="task_due_date" id="" required>
+                    </p>
+
+                    <p>
+                        <button class="add_task_btn modal_btn" type="submit">Create Task</button>
+                        <button class="add_task_btn modal_btn" type="button" style="z-index: 1000;"
+                            id="close_modal_btn">Close</button>
+                    </p>
+                </form> --}}
+
+            </div>
+        </div>
     </body>
 
     </html>

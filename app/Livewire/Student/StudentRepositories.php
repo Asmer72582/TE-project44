@@ -39,7 +39,7 @@ class StudentRepositories extends Component
             return response()->download($filePath, $file->ff_title);
         }
 
-    
+
 
         abort(404);
         // $file = Repositories::where('sub_ff_of', $file_id)->get();
@@ -89,9 +89,12 @@ class StudentRepositories extends Component
 
         abort(404);
     }
-    public function DownloadAll($file_id)
+    public function DownloadAll($id)
     {
 
+        $repo = Repositories::where("sub_ff_id", $id)->all();
+        $this->dispatch("repo", ["message" => $repo, "type" => "success", "title" => "good"]);
+        
 
     }
     public function goBackFolder()
@@ -108,7 +111,7 @@ class StudentRepositories extends Component
         if ($repo) {
             $repo->delete();
             $this->fetchAll();
-            $this->dispatch("file_deleted");
+            $this->dispatch("repo", [ "message" => "File Deleted Successfully.", "type" => "success", "title" => "Deleted"]);
         }
     }
 
@@ -116,7 +119,20 @@ class StudentRepositories extends Component
     {
 
         if (strlen($this->folder_name) == 0) {
-            $this->dispatch("invalid_folder_name");
+            $this->dispatch("repo", [ "message" => "Invalid Folder Name.", "type" => "error", "title" => "Invalid"]);
+            return;
+        }
+        $duplicate = Repositories::where("group_no", Auth::user()->group_no)
+            ->where("sub_ff_of", $this->current_folder)
+            ->where("ff_title", $this->folder_name)
+            ->first();
+
+        if ($duplicate) {
+            $this->dispatch("repo", [ 
+                "message" => "Folder name already exists.", 
+                "type" => "error", 
+                "title" => "Duplicate Folder"
+            ]);
             return;
         }
 
@@ -132,6 +148,8 @@ class StudentRepositories extends Component
         $this->reset(["folder_name"]);
 
         $this->fetchAll();
+        $this->dispatch("repo", [ "message" => "New Folder Added Successfully.", "type" => "success", "title" => "Added"]);
+
     }
 
     function formatFileSize($bytes)
@@ -174,6 +192,8 @@ class StudentRepositories extends Component
             }
 
             $this->fetchAll();
+            $this->dispatch("repo", [ "message" => "New File Uploaded Successfully.", "type" => "success", "title" => "Uploaded"]);
+
         } catch (\Throwable $th) {
             //throw $th;
         }
@@ -184,9 +204,15 @@ class StudentRepositories extends Component
 
 
         if ($this->current_folder == null) {
-            $this->ffs = Repositories::where("group_no", Auth::user()->group_no)->where("sub_ff_of", null)->get();
+            $this->ffs = Repositories::where("group_no", Auth::user()->group_no)
+            ->where("sub_ff_of", null)
+            ->orderBy("ff_id", "desc")
+            ->get();
         } else {
-            $this->ffs = Repositories::where("group_no", Auth::user()->group_no)->where("sub_ff_of", $this->current_folder)->get();
+            $this->ffs = Repositories::where("group_no", Auth::user()->group_no)
+            ->where("sub_ff_of", $this->current_folder)
+            ->orderBy("ff_id", "desc")
+            ->get();
         }
 
     }

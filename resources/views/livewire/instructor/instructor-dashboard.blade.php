@@ -1,196 +1,514 @@
-<div>
+@extends('layouts.instructor_layout')
+@section('content')
+<div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+    <div
+      class="grid grid-cols-2 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5"
+    >
+      <!-- Card Item Start -->
+      <div
+        class="rounded-sm border border-stroke bg-white px-7.5 py-6 shadow-default dark:border-strokedark dark:bg-boxdark"
+      >
+        <div
+          class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4"
+        >
+          <svg
+            class="fill-primary dark:fill-white"
+            width="22"
+            height="16"
+            viewBox="0 0 22 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11 15.1156C4.19376 15.1156 0.825012 8.61876 0.687512 8.34376C0.584387 8.13751 0.584387 7.86251 0.687512 7.65626C0.825012 7.38126 4.19376 0.918762 11 0.918762C17.8063 0.918762 21.175 7.38126 21.3125 7.65626C21.4156 7.86251 21.4156 8.13751 21.3125 8.34376C21.175 8.61876 17.8063 15.1156 11 15.1156ZM2.26876 8.00001C3.02501 9.27189 5.98126 13.5688 11 13.5688C16.0188 13.5688 18.975 9.27189 19.7313 8.00001C18.975 6.72814 16.0188 2.43126 11 2.43126C5.98126 2.43126 3.02501 6.72814 2.26876 8.00001Z"
+              fill=""
+            />
+            <path
+              d="M11 10.9219C9.38438 10.9219 8.07812 9.61562 8.07812 8C8.07812 6.38438 9.38438 5.07812 11 5.07812C12.6156 5.07812 13.9219 6.38438 13.9219 8C13.9219 9.61562 12.6156 10.9219 11 10.9219ZM11 6.625C10.2437 6.625 9.625 7.24375 9.625 8C9.625 8.75625 10.2437 9.375 11 9.375C11.7563 9.375 12.375 8.75625 12.375 8C12.375 7.24375 11.7563 6.625 11 6.625Z"
+              fill=""
+            />
+          </svg>
+        </div>
 
-    <html>
+        <div class="mt-4 flex items-end justify-between">
+          <div>
+            <h4
+              class="text-title-md font-bold text-black dark:text-white"
+            >
+              Tasks
+            </h4>
+            <span class="text-sm font-medium">12</span>
+          </div>
 
-    <head>
-        <link rel="stylesheet" href="{{ asset('css/Homepage.css') }}">
-        <script src="https://www.gstatic.com/charts/loader.js"></script>
-    </head>
+          </span>
+        </div>
+      </div>
+      <!-- Card Item End -->
 
-    <body>
-        <div class="header-box">
-            {{-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                class="navigation-icon" onclick="TabDisplay(event)">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg> --}}
-            <span class="heading">DASHBOARD</span>
+      <!-- Card Item Start -->
+      <div
+        class="rounded-sm border border-stroke bg-white px-7.5 py-6 shadow-default dark:border-strokedark dark:bg-boxdark"
+      >
+        <div
+          class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4"
+        >
+          <svg
+            class="fill-primary dark:fill-white"
+            width="20"
+            height="22"
+            viewBox="0 0 20 22"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11.7531 16.4312C10.3781 16.4312 9.27808 17.5312 9.27808 18.9062C9.27808 20.2812 10.3781 21.3812 11.7531 21.3812C13.1281 21.3812 14.2281 20.2812 14.2281 18.9062C14.2281 17.5656 13.0937 16.4312 11.7531 16.4312ZM11.7531 19.8687C11.2375 19.8687 10.825 19.4562 10.825 18.9406C10.825 18.425 11.2375 18.0125 11.7531 18.0125C12.2687 18.0125 12.6812 18.425 12.6812 18.9406C12.6812 19.4219 12.2343 19.8687 11.7531 19.8687Z"
+              fill=""
+            />
+            <path
+              d="M5.22183 16.4312C3.84683 16.4312 2.74683 17.5312 2.74683 18.9062C2.74683 20.2812 3.84683 21.3812 5.22183 21.3812C6.59683 21.3812 7.69683 20.2812 7.69683 18.9062C7.69683 17.5656 6.56245 16.4312 5.22183 16.4312ZM5.22183 19.8687C4.7062 19.8687 4.2937 19.4562 4.2937 18.9406C4.2937 18.425 4.7062 18.0125 5.22183 18.0125C5.73745 18.0125 6.14995 18.425 6.14995 18.9406C6.14995 19.4219 5.73745 19.8687 5.22183 19.8687Z"
+              fill=""
+            />
+            <path
+              d="M19.0062 0.618744H17.15C16.325 0.618744 15.6031 1.23749 15.5 2.06249L14.95 6.01562H1.37185C1.0281 6.01562 0.684353 6.18749 0.443728 6.46249C0.237478 6.73749 0.134353 7.11562 0.237478 7.45937C0.237478 7.49374 0.237478 7.49374 0.237478 7.52812L2.36873 13.9562C2.50623 14.4375 2.9531 14.7812 3.46873 14.7812H12.9562C14.2281 14.7812 15.3281 13.8187 15.5 12.5469L16.9437 2.26874C16.9437 2.19999 17.0125 2.16562 17.0812 2.16562H18.9375C19.35 2.16562 19.7281 1.82187 19.7281 1.37499C19.7281 0.928119 19.4187 0.618744 19.0062 0.618744ZM14.0219 12.3062C13.9531 12.8219 13.5062 13.2 12.9906 13.2H3.7781L1.92185 7.56249H14.7094L14.0219 12.3062Z"
+              fill=""
+            />
+          </svg>
+        </div>
+
+        <div class="mt-4 flex items-end justify-between">
+          <div>
+            <h4
+              class="text-title-md font-bold text-black dark:text-white"
+            >
+             Participants
+            </h4>
+            <span class="text-sm font-medium">4</span>
+          </div>
+
+         
+          </span>
+        </div>
+      </div>
+      <!-- Card Item End -->
+
+      <!-- Card Item Start -->
+      <div
+        class="rounded-sm border border-stroke bg-white px-7.5 py-6 shadow-default dark:border-strokedark dark:bg-boxdark"
+      >
+        <div
+          class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4"
+        >
+          <svg
+            class="fill-primary dark:fill-white"
+            width="22"
+            height="22"
+            viewBox="0 0 22 22"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21.1063 18.0469L19.3875 3.23126C19.2157 1.71876 17.9438 0.584381 16.3969 0.584381H5.56878C4.05628 0.584381 2.78441 1.71876 2.57816 3.23126L0.859406 18.0469C0.756281 18.9063 1.03128 19.7313 1.61566 20.3844C2.20003 21.0375 2.99066 21.3813 3.85003 21.3813H18.1157C18.975 21.3813 19.8 21.0031 20.35 20.3844C20.9 19.7656 21.2094 18.9063 21.1063 18.0469ZM19.2157 19.3531C18.9407 19.6625 18.5625 19.8344 18.15 19.8344H3.85003C3.43753 19.8344 3.05941 19.6625 2.78441 19.3531C2.50941 19.0438 2.37191 18.6313 2.44066 18.2188L4.12503 3.43751C4.19378 2.71563 4.81253 2.16563 5.56878 2.16563H16.4313C17.1532 2.16563 17.7719 2.71563 17.875 3.43751L19.5938 18.2531C19.6282 18.6656 19.4907 19.0438 19.2157 19.3531Z"
+              fill=""
+            />
+            <path
+              d="M14.3345 5.29375C13.922 5.39688 13.647 5.80938 13.7501 6.22188C13.7845 6.42813 13.8189 6.63438 13.8189 6.80625C13.8189 8.35313 12.547 9.625 11.0001 9.625C9.45327 9.625 8.1814 8.35313 8.1814 6.80625C8.1814 6.6 8.21577 6.42813 8.25015 6.22188C8.35327 5.80938 8.07827 5.39688 7.66577 5.29375C7.25327 5.19063 6.84077 5.46563 6.73765 5.87813C6.6689 6.1875 6.63452 6.49688 6.63452 6.80625C6.63452 9.2125 8.5939 11.1719 11.0001 11.1719C13.4064 11.1719 15.3658 9.2125 15.3658 6.80625C15.3658 6.49688 15.3314 6.1875 15.2626 5.87813C15.1595 5.46563 14.747 5.225 14.3345 5.29375Z"
+              fill=""
+            />
+          </svg>
+        </div>
+
+        <div class="mt-4 flex items-end justify-between">
+          <div>
+            <h4
+              class="text-title-md font-bold text-black dark:text-white"
+            >
+
+            Repositories
+            </h4>
+            <span class="text-sm font-medium">10</span>
+          </div>
+
+          
+          </span>
+        </div>
+      </div>
+      <!-- Card Item End -->
+
+      <!-- Card Item Start -->
+      <div
+        class="rounded-sm border border-stroke bg-white px-7.5 py-6 shadow-default dark:border-strokedark dark:bg-boxdark"
+      >
+        <div
+          class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4"
+        >
+          <svg
+            class="fill-primary dark:fill-white"
+            width="22"
+            height="18"
+            viewBox="0 0 22 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M7.18418 8.03751C9.31543 8.03751 11.0686 6.35313 11.0686 4.25626C11.0686 2.15938 9.31543 0.475006 7.18418 0.475006C5.05293 0.475006 3.2998 2.15938 3.2998 4.25626C3.2998 6.35313 5.05293 8.03751 7.18418 8.03751ZM7.18418 2.05626C8.45605 2.05626 9.52168 3.05313 9.52168 4.29063C9.52168 5.52813 8.49043 6.52501 7.18418 6.52501C5.87793 6.52501 4.84668 5.52813 4.84668 4.29063C4.84668 3.05313 5.9123 2.05626 7.18418 2.05626Z"
+              fill=""
+            />
+            <path
+              d="M15.8124 9.6875C17.6687 9.6875 19.1468 8.24375 19.1468 6.42188C19.1468 4.6 17.6343 3.15625 15.8124 3.15625C13.9905 3.15625 12.478 4.6 12.478 6.42188C12.478 8.24375 13.9905 9.6875 15.8124 9.6875ZM15.8124 4.7375C16.8093 4.7375 17.5999 5.49375 17.5999 6.45625C17.5999 7.41875 16.8093 8.175 15.8124 8.175C14.8155 8.175 14.0249 7.41875 14.0249 6.45625C14.0249 5.49375 14.8155 4.7375 15.8124 4.7375Z"
+              fill=""
+            />
+            <path
+              d="M15.9843 10.0313H15.6749C14.6437 10.0313 13.6468 10.3406 12.7874 10.8563C11.8593 9.61876 10.3812 8.79376 8.73115 8.79376H5.67178C2.85303 8.82814 0.618652 11.0625 0.618652 13.8469V16.3219C0.618652 16.975 1.13428 17.4906 1.7874 17.4906H20.2468C20.8999 17.4906 21.4499 16.9406 21.4499 16.2875V15.4625C21.4155 12.4719 18.9749 10.0313 15.9843 10.0313ZM2.16553 15.9438V13.8469C2.16553 11.9219 3.74678 10.3406 5.67178 10.3406H8.73115C10.6562 10.3406 12.2374 11.9219 12.2374 13.8469V15.9438H2.16553V15.9438ZM19.8687 15.9438H13.7499V13.8469C13.7499 13.2969 13.6468 12.7469 13.4749 12.2313C14.0937 11.7844 14.8499 11.5781 15.6405 11.5781H15.9499C18.0812 11.5781 19.8343 13.3313 19.8343 15.4625V15.9438H19.8687Z"
+              fill=""
+            />
+          </svg>
+        </div>
+
+        <div class="mt-4 flex items-end justify-between">
+          <div>
+            <h4
+              class="text-title-md font-bold text-black dark:text-white"
+            >
+              Notifications
+            </h4>
+            <span class="text-sm font-medium">90</span>
+          </div>
+
+          
+          </span>
+        </div>
+      </div>
+      <!-- Card Item End -->
+    </div>
+
+    <div class="mx-auto max-w-screen-2xl  ">
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-1 md:gap-1 xl:grid-cols-2 2xl:gap-7.5">
+            <div  >
+                <div
+                class="col-span-12 rounded-sm border border-stroke my-11 bg-white px-5 pb-5 pt-7.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-5"
+                    >
+        <div class="mb-3 justify-between gap-4 sm:flex">
+            <div>
+            <h4 class="text-xl font-bold text-black dark:text-white">
+                Progress
+            </h4>
+            </div>
+            <div>
+            <div class="relative z-20 inline-block">
+               
+                
+        
+            </div>
+            </div>
+        </div>
+        <div class="mb-2">
+            <div id="progressChart" class="mx-auto flex justify-center"></div>
+        </div>
+
+        </div>
+        </div>
+           
+            <div>
+                <div
+  class="col-span-12 rounded-sm border my-11 border-stroke bg-white px-5 pb-5 pt-7.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-5"
+>
+  <div class="mb-3 justify-between gap-4 sm:flex">
+    <div>
+      <h4 class="text-xl font-bold text-black dark:text-white">
+       Approved
+      </h4>
+    </div>
+    <div>
+      <div class="relative z-20 inline-block">
+       
+        
+      </div>
+    </div>
+  </div>
+  <div class="mb-2">
+    <div id="approvedChart" class="mx-auto flex justify-center"></div>
+  </div>
+  
+</div>
+
+
+            </div>
             
         </div>
-        <div class="dashboardPannel">
-            <a class='btns parti' href="{{ route('student.participants') }}" wire:navigate>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="btns-4-icon">
-                    <path fill-rule="evenodd"
-                        d="M8.25 6.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM15.75 9.75a3 3 0 116 0 3 3 0 01-6 0zM2.25 9.75a3 3 0 116 0 3 3 0 01-6 0zM6.31 15.117A6.745 6.745 0 0112 12a6.745 6.745 0 016.709 7.498.75.75 0 01-.372.568A12.696 12.696 0 0112 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 01-.372-.568 6.787 6.787 0 011.019-4.38z"
-                        clip-rule="evenodd" />
-                    <path
-                        d="M5.082 14.254a8.287 8.287 0 00-1.308 5.135 9.687 9.687 0 01-1.764-.44l-.115-.04a.563.563 0 01-.373-.487l-.01-.121a3.75 3.75 0 013.57-4.047zM20.226 19.389a8.287 8.287 0 00-1.308-5.135 3.75 3.75 0 013.57 4.047l-.01.121a.563.563 0 01-.373.486l-.115.04c-.567.2-1.156.349-1.764.441z" />
-                </svg>
-                PARTICIPANTS
-                <p class="counter ">{{ $participants_count }}</p>
+        <div class="mx-auto max-w-screen-2xl  ">
+          <div class="grid grid-cols-1 gap-4 md:grid-cols-1 md:gap-1 xl:grid-cols-1 2xl:gap-7.5">
+              <div  >
+                  <div
+                  class="col-span-12 rounded-sm border border-stroke my-11 bg-white px-5 pb-5 pt-7.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-5"
+                      >
+          <div class="mb-3 justify-between gap-4 sm:flex">
+              <div>
+              <h4 class="text-xl font-bold text-black dark:text-white">
+                  Timeline
+              </h4>
+              </div>
+              <div>
+              <div class="relative z-20 inline-block">
+                 
 
-            </a>
-            <a class='btns noti' href="{{ route('student.notifications') }}" wire:navigate>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="btns-1-icon">
-                    <path
-                        d="M5.85 3.5a.75.75 0 00-1.117-1 9.719 9.719 0 00-2.348 4.876.75.75 0 001.479.248A8.219 8.219 0 015.85 3.5zM19.267 2.5a.75.75 0 10-1.118 1 8.22 8.22 0 011.987 4.124.75.75 0 001.48-.248A9.72 9.72 0 0019.266 2.5z" />
-                    <path fill-rule="evenodd" d="M12 2.25A6.75 6.75 0 005.25 9v.75a8.217 8.217 0 01-2.119 5.52.75.75 0 00.298 1.206c1.544.57 3.16.99 4.831 1.243a3.75 3.75 0 107.48 0 24.583 24.583 0 004.83-1.244.75.75 0 00.298-1.205 8.217 8.217 0 01-2.118-5.52V9A6.75 6.75 0 0012 2.25zM9.75 18c0-.034
-              0-.067.002-.1a25.05 25.05 0 004.496 0l.002.1a2.25 2.25 0 11-4.5 0z" clip-rule="evenodd" />
-                </svg>
-                NOTIFICATIONS
-                <p class="counter ">{{ $notification_count }}</p>
-                {{-- <a class="count-1"></a> --}}
-            </a>
-            <a class='btns repo' href="{{ route('student.repositories') }}" wire:navigate>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="btns-2-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25
-              4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
-                </svg>
-                REPOSITORIES
-                <p class="counter ">{{ $repositories_count }}</p>
-
-            </a>
-            <a class='btns task' href="{{ route('student.tasks') }}" wire:navigate>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="btns-3-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25
-                0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75
-                12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
-                </svg>
-                TASKS
-                <p class="counter ">{{ $tasks_count }}</p>
-
-            </a>
-            
-
-        </div>
+          
+              </div>
+              </div>
+          </div>
+          <div class="mb-2">
+              <div id="timelineChart" class="mx-auto flex justify-center"></div>
+          </div>
+  
+          </div>
+          </div>
+    
+    </div>
     
 
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
-  
-        <div class="charts">
-            <div id="chart-1">
-                <p class="chart-1-percentage">{{ $stu_per_done }}%</p>
-            </div>
-            <div id="chart-2">
-                <p class="chart-2-percentage">{{ $approved_per_done }}%</p>
-            </div>
-                
-        </div>
-        @include("nav.instructor-nav")
-        <style>
-             table {
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
-                position: relative;
-                right: 1%;
-                float: right;
-                top: 20vh;
-                width: 43%;
-                text-align: center;
-            }
+  <script>
+       var options = {
+        series: [{{$stu_task_remaining}},{{ $stu_per_done }}],
+    chart: {
+      type: "donut",
+      width: 380,
+    },
+    colors: ["#3C50E0", "#6577F3",],
+    labels: ["Incomplete", "Completed", ],
+    legend: {
+      show: true,
+      position: "bottom",
+    },
 
-            table td,
-            table th {
-                padding: 20px;
-            }
+    plotOptions: {
+      pie: {
+        donut: {
+          size: "65%",
+          background: "transparent",
+        },
+      },
+    },
 
-            table th {
-                background: black;
-                color: white;
-            }
-        </style>
+    dataLabels: {
+      enabled: false,
+    },
+    responsive: [
+      {
+        breakpoint: 640,
+        options: {
+          chart: {
+            width: 200,
+          },
+        },
+      },
+    ],
+        };
+
+        var chart = new ApexCharts(document.querySelector("#progressChart"), options);
+        chart.render();
+
+    // four
+    var second = {
+        series: [{{$approved_task_remaining}},{{ $approved_per_done }}],
+        chart: {
+        type: "donut",
+        width: 380,
+        },
+        colors: ["#3C50E0", "#6577F3",],
+        labels: ["Incomplete", "Completed", ],
+        legend: {
+        show: true,
+        position: "bottom",
+        },
+
+        plotOptions: {
+        pie: {
+            donut: {
+            size: "65%",
+            background: "transparent",
+            },
+        },
+        },
+
+        dataLabels: {
+        enabled: false,
+        },
+        responsive: [
+        {
+            breakpoint: 640,
+            options: {
+            chart: {
+                width: 200,
+            },
+            },
+        },
+        ],
+    };
+
+        var chart = new ApexCharts(document.querySelector("#approvedChart"), second);
+        chart.render();
+    // timeline chart
 
 
-        @if ($accepted_proposal !== null)
-            {{-- <table border="1">
+        var options = {
+          series: [
+          {
+            name: 'Bob',
+            data: [
+              {
+                x: 'Design',
+                y: [
+                  new Date('2019-03-05').getTime(),
+                  new Date('2019-03-08').getTime()
+                ]
+              },
+              {
+                x: 'Code',
+                y: [
+                  new Date('2019-03-02').getTime(),
+                  new Date('2019-03-05').getTime()
+                ]
+              },
+              {
+                x: 'Code',
+                y: [
+                  new Date('2019-03-05').getTime(),
+                  new Date('2019-03-07').getTime()
+                ]
+              },
+              {
+                x: 'Test',
+                y: [
+                  new Date('2019-03-03').getTime(),
+                  new Date('2019-03-09').getTime()
+                ]
+              },
+              {
+                x: 'Test',
+                y: [
+                  new Date('2019-03-08').getTime(),
+                  new Date('2019-03-11').getTime()
+                ]
+              },
+              {
+                x: 'Validation',
+                y: [
+                  new Date('2019-03-11').getTime(),
+                  new Date('2019-03-16').getTime()
+                ]
+              },
+              {
+                x: 'Design',
+                y: [
+                  new Date('2019-03-01').getTime(),
+                  new Date('2019-03-03').getTime()
+                ],
+              }
+            ]
+          },
+          {
+            name: 'Joe',
+            data: [
+              {
+                x: 'Design',
+                y: [
+                  new Date('2019-03-02').getTime(),
+                  new Date('2019-03-05').getTime()
+                ]
+              },
+              {
+                x: 'Test',
+                y: [
+                  new Date('2019-03-06').getTime(),
+                  new Date('2019-03-16').getTime()
+                ],
+                goals: [
+                  {
+                    name: 'Break',
+                    value: new Date('2019-03-10').getTime(),
+                    strokeColor: '#CD2F2A'
+                  }
+                ]
+              },
+              {
+                x: 'Code',
+                y: [
+                  new Date('2019-03-03').getTime(),
+                  new Date('2019-03-07').getTime()
+                ]
+              },
+              {
+                x: 'Deployment',
+                y: [
+                  new Date('2019-03-20').getTime(),
+                  new Date('2019-03-22').getTime()
+                ]
+              },
+              {
+                x: 'Design',
+                y: [
+                  new Date('2019-03-10').getTime(),
+                  new Date('2019-03-16').getTime()
+                ]
+              }
+            ]
+          },
+          {
+            name: 'Dan',
+            data: [
+              {
+                x: 'Code',
+                y: [
+                  new Date('2019-03-10').getTime(),
+                  new Date('2019-03-17').getTime()
+                ]
+              },
+              {
+                x: 'Validation',
+                y: [
+                  new Date('2019-03-05').getTime(),
+                  new Date('2019-03-09').getTime()
+                ],
+                goals: [
+                  {
+                    name: 'Break',
+                    value: new Date('2019-03-07').getTime(),
+                    strokeColor: '#CD2F2A'
+                  }
+                ]
+              },
+            ]
+          }
+        ],
+          chart: {
+          height: 450,
+          type: 'rangeBar'
+        },
+        plotOptions: {
+          bar: {
+            horizontal: true,
+            barHeight: '80%'
+          }
+        },
+        xaxis: {
+          type: 'datetime'
+        },
+        stroke: {
+          width: 1
+        },
+        fill: {
+          type: 'solid',
+          opacity: 0.6
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'left'
+        }
+        };
 
-                <thead>
-                    <th>Proposal Submitted Date</th>
-                    <th>Proposal Accepted Date</th>
-                    <th>Proposal Domain</th>
-                    <th>Proposal Title</th>
-                    <th>Proposal Description</th>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td>{{ $accepted_proposal->created_at }}</td>
-                        <td>{{ $accepted_proposal->updated_at }}</td>
-                        <td>{{ $accepted_proposal->proposal_domain }}</td>
-                        <td>{{ $accepted_proposal->proposal_name }}</td>
-                        <td>{{ $accepted_proposal->proposal_description }}</td>
-                    </tr>
-
-                </tbody>
-
-            </table> --}}
-        @endif
-
-
-        <script>
-            google.charts.load('current', {
-                'packages': ['corechart']
-            });
-            google.charts.setOnLoadCallback(drawChart);
-
-            function drawChart() {
-                const data = google.visualization.arrayToDataTable([
-                    ['Progress', 'Value'],
-                    ['Completed', {{ $stu_per_done }}],
-                    ['Incomplete', {{ $stu_task_remaining }}]
-                ]);
-
-                const data2 = google.visualization.arrayToDataTable([
-                    ['Progress', 'Value'],
-                    ['Completed', {{ $approved_per_done }}],
-                    ['Incomplete', {{ $approved_task_remaining }}]
-                ]);
-
-                const options1 = {
-                    width: 450,
-                    height: 400,
-                    title: 'Progress',
-                    titleTextStyle: {
-                        fontSize: 25
-                    },
-                    pieHole: 0.4,
-                    pieSliceText: 'percentage',
-                    legend: 'left',
-                    colors: ['rgb(242, 26, 242)', 'rgb(94, 94, 242)']
-                };
-                const options2 = {
-                    width: 450,
-                    height: 400,
-                    title: 'Approved Progress',
-                    pieHole: 0.4,
-                    pieSliceText: 'percentage',
-                    titleTextStyle: {
-                        fontSize: 25
-                    },
-                    legend: 'left',
-                    colors: ['rgb(242, 26, 242)', 'rgb(94, 94, 242)']
-                };
-                const chart1 = new google.visualization.PieChart(document.getElementById('chart-1'));
-                const chart2 = new google.visualization.PieChart(document.getElementById('chart-2'));
-                chart1.draw(data, options1);
-                chart2.draw(data2, options2);
-            }
-
-            function TabDisplay(event) {
-                let tab = document.getElementsByClassName("navigation-tab")[0];
-                if (tab.style.display === 'flex') {
-                    tab.style.display = 'none';
-                } else {
-                    tab.style.display = 'flex';
-                }
-            }
-
-            function redirecttoTimeline(event) {
-                window.location.href = 'Timeline.html';
-            }
-        </script>
-    </body>
-
-    </html>
-</div>
+        var chart = new ApexCharts(document.querySelector("#timelineChart"), options);
+        chart.render();
+  </script>
+@endsection

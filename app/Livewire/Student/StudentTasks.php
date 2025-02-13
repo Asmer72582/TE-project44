@@ -34,6 +34,8 @@ class StudentTasks extends Component
             $task = Tasks::where('task_id', $task_id)->first();
             $task->update(['task_folder' => $folder_id, "task_completed_date" => $task_completed_date]);
 
+            $this->dispatch("tasks", [ "message" => "Your work submitted.", "type" => "success", "title" => "Submitted"]);
+
             if($folder_id !== null){
                 $new_notification = new Notifications([
                     "group_no" => Auth::user()->group_no,

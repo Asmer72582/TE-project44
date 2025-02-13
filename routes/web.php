@@ -23,12 +23,8 @@ Route::get('/', function () {
     return redirect("login");
 });
 
-
-Route::get('/testroute', function () {
-
-    return view('mail.test-email');
-
-
+Route::get('/test', function() {
+    return view("student.landingpage");
 });
 
 
@@ -71,6 +67,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard/student/notifications', function () {
             return view("student.notifications");
         })->name("student.notifications");
+
+        Route::get('/dashboard/student/calender', function () {
+            return view("student.calender");
+        })->name("student.calender");
 
         Route::get('/dashboard/student/repositories', function () {
             return view("student.repositories");

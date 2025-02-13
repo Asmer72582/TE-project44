@@ -9,11 +9,15 @@ use Livewire\Component;
 class StudentParticipants extends Component
 {
 
-    public $participants;
+    public $participants, $authInfo;
 
-    public function mount(){
+    public function mount()
+    {
+        $this->authInfo = Auth::user();
         $this->participants = User::where('group_no', Auth::user()->group_no)
-        ->orderBy("user_type","ASC")->get();
+            ->orderBy("user_type", "ASC")->get();
+
+
     }
 
     public function render()

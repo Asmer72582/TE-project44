@@ -1,378 +1,201 @@
-<div>
+
+@extends('layouts.instructor_layout')
+@section('content')
+<style>
+    img{
+        height: 30px;
+
+       
+    }
+    @media (min-width: 1024px) {
+        #form-container {
+            position: sticky;
+            top: 1rem;
+        }
+    }
+</style>
+<div class="mx-auto max-w-screen-2xl p-4 md:px-6 2xl:px-10 my-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <h2 class="text-title-md2 font-bold text-black dark:text-white">
+      Tasks
+    </h2>
+
+    <nav>
+      <ol class="flex items-center gap-2">
+        <li>
+          <a class="font-medium" href="index.html">Dashboard /</a>
+        </li>
+        <li class="font-medium text-primary">Tasks</li>
+      </ol>
+    </nav>
+  </div>
+<div class="min-h-screen flex  justify-center">
 
 
-    <html>
 
-    <head>
-        <link rel="stylesheet" href="{{ asset('css/Tasks.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/Homepage.css') }}">
-        <script src="https://www.gstatic.com/charts/loader.js"></script>
-    </head>
+<div class="relative overflow-x-auto mx-10">
+    <table class="w-full  text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
 
-    <body>
-        <div class="header-box">
-           
-            <span class="heading">TASKS</span>
 
+              <!-- Start coding here -->
+              <div class="relative text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400  border">
+                <div class="flex flex-col items-center justify-between p-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
+                  <div class="w-full md:w-1/2">
+                   <h1 class="font-bold">Tasks</h1>
+                  </div>
+                  <div class="flex flex-col items-stretch justify-end flex-shrink-1 w-full space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center md:space-x-3">
+                    
+                    <div class="flex items-center w-full space-x-3 md:w-auto">
+                      
+                      <button id="filterDropdownButton"  class="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg md:w-auto focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" type="button" 
+                      onclick="printTable()">
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="w-4 h-4 mr-2 text-gray-400" viewbox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clip-rule="evenodd" />
+                        </svg>
+                        Export
+                        <svg class="-mr-1 ml-1.5 w-5 h-5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                          <path clip-rule="evenodd" fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                        </svg>
+                      </button>
+                      <!-- Dropdown menu -->
+                      
+                    </div>
+                  </div>
+                </div>
+
+
+
+        <thead class="w-full text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr class="border border-gray-300 px-4 py-2 text-left">
+                <th scope="col" class=" border border-gray-300 px-4 py-2 text-left">
+                   Group No
+                </th>
+                <th scope="col" class=" border border-gray-300 px-4 py-2 text-left">
+                    Week no
+                </th>
+                <th scope="col" class=" border border-gray-300 px-4 py-2 text-left">
+                    Task
+                </th>
+                <th scope="col" class=" border border-gray-300 px-4 py-2 text-left">
+                    Due Date
+                </th>
+                <th scope="col" class=" border border-gray-300 px-4 py-2 text-left">
+                    Completed date
+                </th>
+                <th scope="col" class=" border border-gray-300 px-4 py-2 text-left">
+                    Remark
+                </th>
+                <th scope="col" class=" border border-gray-300 px-4 py-2 text-left">
+                    Early/Delay
+                </th>
+                <th scope="col" class=" border border-gray-300 px-4 py-2 text-left">
+                    Folder
+                </th>
+                <th scope="col" class=" border border-gray-300 px-4 py-2 text-left">
+                    Operation
+                </th>
+            </tr>
+        </thead>
+        <tbody>
             
-
-
-        </div>
-
-        @include('nav.instructor-nav')
-        <style>
-            table {
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
-                position: relative;
-                left: 25%;
-                top: 3.2vh;
-                width: 70%;
-                box-shadow: 0px 0px 10px gray;
-            }
-
-
-
-            table tr {
-                text-align: center;
-            }
-
-            thead {
-                background: black;
-                color: white;
-            }
-
-            th {
-                padding: 10px;
-            }
-
-            td {
-                padding: 10px;
-                /* background: whitesmoke; */
-            }
-
-            .toggle_button {
-                background: black;
-                text-align: center;
-                align-content: center;
-                justify-content: center;
-                color: white;
-                padding: 10px;
-                z-index: 100;
-                cursor: pointer;
-            }
-
-            .add_task_btn {
-                background: -webkit-linear-gradient(right, rgb(242, 26, 242), rgba(94, 94, 242));
-                color: white;
-                padding: 10px;
-                position: relative;
-                top: 2vh;
-                outline: none;
-                border: none;
-                cursor: pointer;
-                z-index: 30;
-                left: 19%;
-            }
-
-
-            .modal_show {
-                display: flex;
-            }
-
-            .modal_hide {
-                display: none;
-            }
-
-            .modal_background {
-                height: 100vh;
-                width: 100%;
-                background: rgba(0, 0, 0, 0.5);
-                position: absolute;
-                z-index: 50;
-                margin: 0px;
-                padding: 0px;
-                left: 0px;
-                top: 0px;
-                border: none;
-                justify-content: center;
-                align-content: center;
-            }
-
-            .modal {
-                height: 50vh;
-                width: 20%;
-                background: whitesmoke;
-                margin-top: 5%;
-                border-radius: 10px;
-                color: black;
-                justify-content: center;
-                text-align: center;
-                max-width: 50%;
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
-            }
-
-            label {
-                display: block;
-                margin: 10px;
-            }
-
-            .form_input {
-                width: 50%;
-                padding: 10px;
-                box-shadow: 0px 0px 1px black;
-            }
-
-            .modal_btn {
-                left: 10px;
-                box-shadow: 0px 0px 4px black !important;
-            }
-
-            td {
-                border: 1px solid black;
-            }
-        </style>
-
-
-        <div class="modal_background modal_hide" id="modal_background">
-            <div class="modal">
-                <h1>Add Task</h1>
-                <form wire:submit.prevent="create_task">
-                    <p>
-                        <label for="">Week No.</label>
-                        <input type="number" name="" class="form_input" placeholder="Week" wire:model="week_no"
-                            id="" required>
-                    </p>
-                    <p>
-                        <label for="">Task Title</label>
-                        <input type="text" name="" class="form_input" placeholder="Task Title"
-                            wire:model="task_title" id="" required>
-                    </p>
-                    <p>
-                        <label for="">Task Due Date</label>
-                        <input type="date" name="" class="form_input" placeholder="Due Date"
-                            wire:model="task_due_date" id="" required>
-                    </p>
-
-                    <p>
-                        <button class="add_task_btn modal_btn" type="submit">Create Task</button>
-                        <button class="add_task_btn modal_btn" type="button" style="z-index: 1000;"
-                            id="close_modal_btn">Close</button>
-                    </p>
-                </form>
-
-            </div>
-        </div>
-
-
-        <button class="add_task_btn" onclick="create_task" id="create_task" style="display: none">Add Task</button>
-        <button class="add_task_btn" onclick="printTable()">Print</button>
-
-
-        <style>
-            @media print {
-
-
-                .header-box {
-                    display: none;
-                }
-
-                /* Hide the button when printing */
-                button {
-                    display: none;
-                }
-
-                /* Define print styles for the table */
-                table {
-                    width: 100%;
-                    position: absolute;
-                    left: 0px;
-                    top: 20px;
-                    border-collapse: collapse;
-                    margin-bottom: 10px;
-
-                }
-
-                th:nth-last-child(-n+2),
-                td:nth-last-child(-n+2) {
-                    display: none;
-                }
-
-                th {
-                    font-weight: bolder;
-                    color:#000;
-                }
-
-                th,
-                td {
-                    border: 1px solid #000;
-                    padding: 8px;
-                    text-align: left;
-                }
-
-                th {
-                    background-color: #f2f2f2;
-                }
-            }
-        </style>
-
-        <script defer>
-            function printTable() {
-                window.print();
-            }
-
-
-            let create_task = document.getElementById("create_task");
-            let modalBackground = document.getElementById("modal_background");
-            create_task.addEventListener("click", function() {
-                // Remove all existing classes
-                modalBackground.className = "";
-                // Add the new class
-                modalBackground.classList.add("modal_background");
-                modalBackground.classList.add("modal_show");
-            })
-        </script>
-
-        <table id="my_table">
-
-            <thead>
-                <th>Group No</th>
-                <th>Week No</th>
-                <th>Task</th>
-                <th style="width:15%">Due Date</th>
-                <th>Completed Date</th>
-                <th>Remark</th>
-                <th>Early / Delay</th>
-                <th>Folder</th>
-                <th>Operation</th>
-            </thead>
-
-
-            <tbody>
-
-                @foreach ($tasks as $task)
-                    <tr>
-                        @if ($loop->index == 0)
-                            <td rowspan="100" style="text-align: center;">{{ $group_no }}</td>
+            @foreach ($tasks as $task)
+            <tr>
+                @if ($loop->index == 0)
+                    <td rowspan="100" class="border border-gray-300 px-4 py-2 text-left">{{ $group_no }}</td>
+                @endif
+                <td class="border border-gray-300 px-4 py-2 text-left">{{ $task->week_no }}</td>
+                <td class="border border-gray-300 px-4 py-2 text-left">{{ $task->task_title }}</td>
+                <td class="border border-gray-300 px-4 py-2 text-left">{{ $task->task_due_date }}</td>
+                <td class="border border-gray-300 px-4 py-2 text-left">{{ $task->task_completed_date }}</td>
+                <td class="border border-gray-300 px-4 py-2 text-left">{{ $task->task_remark }}</td>
+                <td  class="border border-gray-300 px-4 py-2 text-left">
+                    @if ($task->task_completed_date && $task->task_completed_date > $task->task_due_date)
+                        Late Submission by
+                        {{ \Carbon\Carbon::parse($task->task_completed_date)->diffInDays($task->task_due_date) }}
+                        days
+                    @else
+                        @if ($task->task_folder !== null)
+                            Submitted
+                        @else
+                            Not Submitted
                         @endif
-                        <td style="text-align: center;">{{ $task->week_no }}</td>
-                        <td style="text-align: center;">{{ $task->task_title }}</td>
-                        <td style="text-align: center;">{{ $task->task_due_date }}</td>
-                        <td style="text-align: center;">{{ $task->task_completed_date }}</td>
-                        <td style="text-align: center;">{{ $task->task_remark }}</td>
-                        <td>
-                            @if ($task->task_completed_date && $task->task_completed_date > $task->task_due_date)
-                                Late Submission by
-                                {{ \Carbon\Carbon::parse($task->task_completed_date)->diffInDays($task->task_due_date) }}
-                                days
-                            @else
-                                @if ($task->task_folder !== null)
-                                    Submitted
-                                @else
-                                    Not Submitted
-                                @endif
-                            @endif
-                        </td>
-                        <td>
-                            @if ($task->task_folder === null)
-                                ----
-                            @else
-                                <a href="{{ route('instructor.open.folder', $task->task_folder) }}" wire:naviate>
-                                    <button
-                                        style="background:blue; color:white; border:none; border-radius:10px; padding:10px; cursor: pointer;">View</button>
-                                </a>
-                            @endif
-                        </td>
-                        <td>
-                            <button class="toggle_button" id="toggle_task_btn"
-                                onclick="toggleTasks(this.value, {{ $task->task_id }})"
-                                value="{{ (int) $task->task_status }}">
-                                @if ($task->task_status == 0)
-                                    Click here to Mark as Accepted <img src="{{ asset('img/tick.png') }}"
-                                        height="20" alt="">
-                                @else
-                                    Click here to Mark as Rejected <img src="{{ asset('img/rejected.png') }}"
-                                        height="20" alt="">
-                                @endif
-                            </button>
+                    @endif
+                </td>
+                <td  class="border border-gray-300 px-4 py-2 text-left">
 
-                            <button wire:click="deleteTask({{ $task->task_id }})"
-                                style="background:red; border:none; display:none; cursor: pointer; border-radius:5px; color:white; padding:14px; margin:5px;">
-                                Delete
-                            </button>
+                    {{-- <select name="" id="task_folder" class="border border-gray-300 px-4 py-2 text-left" task_id={{ $task->task_id }} id="task_folder">
+                        <option>Select</option>
+                        @foreach ($folders as $folder)
+                            <option value="{{ $folder->ff_id }}"
+                                @if ($folder->ff_id == $task->task_folder) @selected(true) @endif>
+                                {{ $folder->ff_title }}
+                            </option>
+                        @endforeach
 
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
+                    </select> --}}
+                    @if ($task->task_folder === null)
+                    ----
+                @else
+                    <a href="{{ route('instructor.open.folder', $task->task_folder) }}" wire:naviate>
+                        <button class="border border-gray-300 px-4 py-2 text-left">View</button>
+                    </a>
+                @endif
 
-        </table>
+                </td>
+                <td  class="border border-gray-300 px-4 py-2 text-left">
+                    <button class="toggle_button" id="toggle_task_btn"
+                    onclick="toggleTasks(this.value, {{ $task->task_id }})"
+                    value="{{ (int) $task->task_status }}">
+                    @if ($task->task_status == 0)
+                        Click here to Mark as Accepted <img src="{{ asset('img/tick.png') }}"
+                            height="20" alt="">
+                    @else
+                        Click here to Mark as Rejected <img src="{{ asset('img/rejected.png') }}"
+                            height="20" alt="">
+                    @endif
+                </button>
 
-
-    </body>
-
-    </html>
-
-
-    <script>
-        function TabDisplay(event) {
-            let tab = document.getElementsByClassName("navigation-tab")[0];
-            if (tab.style.display === 'flex') {
-                tab.style.display = 'none';
-            } else {
-                tab.style.display = 'flex';
-            }
-        }
-    </script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-    <script defer>
-        window.addEventListener('task_created', event => {
-            alert("Task Created Successfully!");
-            var mb = document.getElementById("modal_background");
-            // Remove all existing classes
-            mb.className = "";
-            // Add the new class
-            mb.classList.add("modal_background");
-            mb.classList.add("modal_hide");
-        });
-
-        $(document).ready(function() {
-            $(document).on("click", "#close_modal_btn", function() {
-                var mb = document.getElementById("modal_background");
-                // Remove all existing classes
-                mb.className = "";
-                // Add the new class
-                mb.classList.add("modal_background");
-                mb.classList.add("modal_hide");
-            })
-        })
-
-        async function toggleTasks(val, task_id) {
-
-            let ques = "Remark for Approval of Task";
-
-            if (val == 1) {
-                ques = "Remark for Rejecting the Task";
-            }
-
-            const {
-                value: text
-            } = await Swal.fire({
-                input: "textarea",
-                inputLabel: ques,
-                inputPlaceholder: ques,
-                inputAttributes: {
-                    "aria-label": ques
-                },
-                showCancelButton: true
-            });
-            if (text) {
-                @this.update_remark(text, task_id, val);
-            }
-        }
-    </script>
-
-
-
+                <button wire:click="deleteTask({{ $task->task_id }})"
+                    style="background:red; border:none; display:none; cursor: pointer; border-radius:5px; color:white; padding:14px; margin:5px;">
+                    Delete
+                </button>
+                </td>
+            </tr>
+        @endforeach
+            
+        </tbody>
+    </table>
 </div>
+
+
+<script defer>
+    function printTable() {
+        body.style.display = "none";
+        window.print();
+    }
+    async function toggleTasks(val, task_id) {
+
+let ques = "Remark for Approval of Task";
+
+if (val == 1) {
+    ques = "Remark for Rejecting the Task";
+}
+
+const {
+    value: text
+} = await Swal.fire({
+    input: "textarea",
+    inputLabel: ques,
+    inputPlaceholder: ques,
+    inputAttributes: {
+        "aria-label": ques
+    },
+    showCancelButton: true
+});
+if (text) {
+    @this.update_remark(text, task_id, val);
+}
+}
+</script>
+ 
+</div>
+@endsection

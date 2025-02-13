@@ -9,15 +9,12 @@
 
     <body>
         <div class="header-box">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                class="navigation-icon" onclick="TabDisplay(event)">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
+    
             <span class="heading">NOTIFICATIONS</span>
 
-            @include('nav.superadmin-nav')
-        </div>
 
+        </div>
+        @include('nav.superadmin-nav')
         <style>
             .notification-container {
                 width: 70%;
@@ -31,7 +28,11 @@
             }
 
             .notifications {
-                background: -webkit-linear-gradient(right, rgb(242, 26, 242), rgba(94, 94, 242));
+                background-color: #198754;
+                width: 90%;
+                display: flex;
+                flex-direction: column;
+                margin-left: 100px;
                 box-shadow: 0px 0px 10px black;
                 padding: 20px;
                 margin-top: 20px;
@@ -79,7 +80,7 @@
             .create-folder-section button,
             .upload-file-section input[type="submit"] {
                 color: white;
-                background: black;
+                background: #198754;
                 padding: 10px;
                 outline: none;
             }
@@ -94,8 +95,9 @@
                 padding:10px;
                 cursor: pointer;
                 outline: none;
-                background:black;
+                background:#198754;
                 color:white;
+                border: none;
                 position: absolute;
                 top:30%;
                 right:40%;

@@ -1,3 +1,38 @@
+<style>
+    body{
+        margin: 0px;
+        padding: 0px;
+    }
+    a{
+        text-decoration: none;
+    }
+    a:hover{
+        text-decoration: none;
+    }
+
+    .navigation-tab{
+        position: fixed;
+        width: 350px;
+        /* overflow-y: scroll; */
+
+        height: 100%;
+        margin: 0px;
+        top: 0px;
+    }
+    .nav-6,.nav-2,.nav-3, .nav-5, .nav-7, .nav-4{
+padding: 5px;
+width: 100%;
+    }
+    
+    
+    
+</style>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
 <div class="navigation-tab" style="overflow: hidden">
     <a href="{{ route('profile.edit') }}"><p class="nav-1">My Profile</p></a>
 
@@ -6,6 +41,7 @@
             d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
             clip-rule="evenodd" />
     </svg>
+    <br><br>
     <div class="info">
         <p class="nav-1-content-1">Name:<span id="content-1-span"> {{ Auth::user()->name }} </span></p>
     <p class="nav-1-content-2">Department:<span id="content-1-span"> {{ Auth::user()->department }} </span></p>
