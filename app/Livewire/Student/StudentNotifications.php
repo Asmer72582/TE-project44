@@ -12,7 +12,7 @@ class StudentNotifications extends Component
     public $notifications;
 
     public function fetchNotifications(){
-        $this->notifications = Notifications::where("group_no",Auth::user()->group_no)->orderBy("created_at","DESC")->get();
+        $this->notifications = Notifications::where("group_no",Auth::user()->group_no)->orderBy("created_at",direction: "DESC")->get();
     }
 
     public function mount(){
