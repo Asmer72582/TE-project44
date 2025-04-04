@@ -122,10 +122,7 @@
                     <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{ $ff->ff_title }}</h5>
                     <span class="text-sm text-gray-500 dark:text-gray-400"> {{ $ff->created_at }}</span>
                     <div class="flex mt-4 md:mt-6">
-                        {{-- <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" wire:click="openFolder({{ $ff->ff_id }})">Open</a> --}}
-                        {{-- <a href="#" class="py-2 px-4 ms-2 text-sm font-medium  focus:outline-none bg-red-600 text-white rounded-lg border border-gray-200 hover:bg-gray-100  focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" wire:click="deleteFF({{ $ff->ff_id }})">Delete</a> --}}
-                        <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" wire:click="openFolder({{ $ff->sub_ff_of }})">Download {{ $ff->sub_ff_of }}</a>
-
+                        <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" wire:click="downloadFolder({{ $ff->ff_id }})">Download Folder</a>
                     </div>
                 </div>
             </div>

@@ -8,6 +8,8 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use ZipArchive;
 
 class StudentRepositories extends Component
 {
@@ -227,5 +229,88 @@ class StudentRepositories extends Component
     public function render()
     {
         return view('livewire.student.student-repositories');
+    }
+
+    public function getAllFilesInFolder($folderId)
+    {
+        $allFiles = [];
+        
+        // Get all items in current folder
+        $items = Repositories::where('sub_ff_of', $folderId)->get();
+        
+        foreach ($items as $item) {
+            if ($item->is_folder) {
+                // Recursively get files from subfolders
+                $allFiles = array_merge($allFiles, $this->getAllFilesInFolder($item->ff_id));
+            } else {
+                // Add file to the list
+                $allFiles[] = $item;
+            }
+        }
+        
+        return $allFiles;
+    }
+
+    public function downloadFolder($folderId)
+    {
+        $folder = Repositories::where('ff_id', $folderId)->first();
+        
+        if (!$folder || !$folder->is_folder) {
+            $this->dispatch("repo", [
+                "message" => "Invalid folder selected.",
+                "type" => "error",
+                "title" => "Error"
+            ]);
+            return;
+        }
+
+        // Get all files in the folder and subfolders
+        $files = $this->getAllFilesInFolder($folderId);
+        
+        if (empty($files)) {
+            $this->dispatch("repo", [
+                "message" => "Folder is empty.",
+                "type" => "warning",
+                "title" => "Empty Folder"
+            ]);
+            return;
+        }
+
+        // Create a temporary ZIP file
+        $zipFileName = $folder->ff_title . '_' . time() . '.zip';
+        $zipPath = storage_path('app/temp/' . $zipFileName);
+        
+        // Ensure temp directory exists
+        if (!File::exists(storage_path('app/temp'))) {
+            File::makeDirectory(storage_path('app/temp'), 0755, true);
+        }
+
+        $zip = new ZipArchive();
+        
+        if ($zip->open($zipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) === TRUE) {
+            foreach ($files as $file) {
+                $filePath = storage_path('app/' . $file->file_path);
+                if (File::exists($filePath)) {
+                    // Add file to zip
+                    $zip->addFile($filePath, $file->ff_title);
+                }
+            }
+            $zip->close();
+
+            // Download the zip file
+            $headers = [
+                'Content-Type' => 'application/zip',
+                'Content-Disposition' => 'attachment; filename="' . $zipFileName . '"',
+            ];
+
+            return response()->download($zipPath, $zipFileName, $headers)->deleteFileAfterSend(true);
+        }
+
+        $this->dispatch("repo", [
+            "message" => "Could not create zip file.",
+            "type" => "error",
+            "title" => "Error"
+        ]);
+        return;
     }
 }

@@ -1,28 +1,28 @@
-
 @extends('layouts.student_layout')
 @section('content')
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    {{-- @include('profile.partials.update-profile-information-form') --}}
-                </div>
+<div class="mx-auto max-w-screen-2xl p-4 md:px-6 2xl:px-10">
+    <div class="mb-6">
+        <h2 class="text-2xl font-bold mb-4">Profile Settings</h2>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Profile Information Section -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                @include('profile.partials.update-profile-information-form')
             </div>
 
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    {{-- @include('profile.partials.update-password-form') --}}
-                </div>
+            <!-- Password Update Section -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                @include('profile.partials.update-password-form')
             </div>
 
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    {{-- @include('profile.partials.delete-user-form') --}}
+            <!-- Danger Zone -->
+            <div class="lg:col-span-2">
+                <div class="bg-red-50 p-6 rounded-lg shadow-md border-2 border-red-100">
+                    @include('profile.partials.delete-user-form')
                 </div>
             </div>
         </div>
     </div>
-
+</div>
 @endsection
 

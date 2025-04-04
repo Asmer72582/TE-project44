@@ -60,4 +60,20 @@ class User extends Authenticatable
             ->count();
     }
 
+    /**
+     * Get tasks assigned to this user
+     */
+    public function assignedTasks()
+    {
+        return $this->hasMany(KanbanTask::class, 'assigned_to');
+    }
+
+    /**
+     * Get tasks created by this user
+     */
+    public function createdTasks()
+    {
+        return $this->hasMany(KanbanTask::class, 'created_by');
+    }
+
 }
